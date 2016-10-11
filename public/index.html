@@ -8,12 +8,21 @@
 
 <form action="/upload" enctype="multipart/form-data" method="post">
     <input type="file" name="file" />
-    <input type="text" name="shortFileName" /><br>
+    <input type="text" placeholder="File name" name="shortFileName" /><br>
+    <input type="password" placeholder="Delete password" name="deletepassword" />
     <input type="checkbox" name="permanent" value="true" />Permanent&nbsp;
     <button type="submit">Upload</button>
-</form>
+</form><br><br>
 
-<div id="filelist"></div>
+<form action="/delete-file-pass" method="post">
+    <input type="password" placeholder="Enter delete password to delete" name="deletepassword" />
+    <button type="submit">Delete</button>
+</form>
+This is the assigned password matching delete solution. Type a password you assigned to a file, and it will be deleted.<br>
+Files without a delete password cannot be deleted with this method.<br><br>
+
+<div id="filelist"></div><br>
+These delete buttons were my original solution. They are inserted with JS and delete any file without authentication.
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

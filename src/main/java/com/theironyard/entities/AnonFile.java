@@ -15,6 +15,9 @@ public class AnonFile {
     @Column(nullable = false)
     String originalFilename;
 
+    @Column(nullable = true)
+    String deletepassword;
+
     public AnonFile() {
     }
 
@@ -35,11 +38,19 @@ public class AnonFile {
         return originalFilename;
     }
 
+    public String getDeletePassword() {
+        return deletepassword;
+    }
+
     public void setFilename(String filename) {
         this.filename = filename;
     }
 
     public void setOriginalFilename(String originalFilename) {
         this.originalFilename = originalFilename;
+    }
+
+    public void setDeletePassword(String deletePassword) {
+        this.deletepassword = deletePassword;
     }
 }

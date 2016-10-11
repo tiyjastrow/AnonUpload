@@ -23,7 +23,7 @@ public class AnonUploadController {
     AnonFileRepository files;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public void upload(MultipartFile file, boolean permanent, String shortFileName, HttpServletResponse response) throws Exception {
+    public void upload(MultipartFile file, boolean permanent, String shortFileName, String deletepassword, HttpServletResponse response) throws Exception {
         File dir = new File("public/files");
         dir.mkdirs();
         File f;
@@ -65,6 +65,9 @@ public class AnonUploadController {
         }
 
         AnonFile anonFile = new AnonFile(f.getName(), shortFileName);
+        if (! deletepassword.isEmpty()) {
+            anonFile.setDeletePassword(deletepassword);
+        }
         files.save(anonFile);
 
         response.sendRedirect("/");
@@ -91,6 +94,26 @@ public class AnonUploadController {
             }
         }
         files.delete(id);
+
+        response.sendRedirect("/");
+    }
+
+    @RequestMapping(path = "/delete-file-pass", method = RequestMethod.POST)
+    public void deletePasswordFile(String deletepassword, HttpServletResponse response) throws Exception {
+        AnonFile af;
+        if (! deletepassword.isEmpty()) {
+            af = files.findByDeletepassword(deletepassword);
+            if (af != null) {
+                File dir = new File("public/files");
+                File[] fileArray = dir.listFiles();
+                for (File f : fileArray) {
+                    if (f.getName().equals(af.getFilename())) {
+                        f.delete();
+                    }
+                }
+                files.delete(af.getId());
+            }
+        }
 
         response.sendRedirect("/");
     }
