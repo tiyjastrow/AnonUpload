@@ -15,8 +15,11 @@ public class AnonFile {
     @Column(nullable = false)
     String originalFilename;
 
-    @Column(nullable = true)
-    String deletepassword;
+    @Column(nullable = false)
+    String deletepassword = "";
+
+    @Column(nullable = false)
+    boolean hasDeletePassword = false;
 
     public AnonFile() {
     }
@@ -38,8 +41,12 @@ public class AnonFile {
         return originalFilename;
     }
 
-    public String getDeletePassword() {
+    public String getDeletepassword() {
         return deletepassword;
+    }
+
+    public boolean isHasDeletePassword() {
+        return hasDeletePassword;
     }
 
     public void setFilename(String filename) {
@@ -50,7 +57,15 @@ public class AnonFile {
         this.originalFilename = originalFilename;
     }
 
-    public void setDeletePassword(String deletePassword) {
-        this.deletepassword = deletePassword;
+    public void setDeletepassword(String deletepassword) {
+        this.deletepassword = deletepassword;
+    }
+
+    public void setHasDeletePassword(boolean hasDeletePassword) {
+        this.hasDeletePassword = hasDeletePassword;
+    }
+
+    public void toggleHasDeletePassword() {
+        this.hasDeletePassword = !hasDeletePassword;
     }
 }

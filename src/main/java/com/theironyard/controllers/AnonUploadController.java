@@ -66,7 +66,8 @@ public class AnonUploadController {
 
         AnonFile anonFile = new AnonFile(f.getName(), shortFileName);
         if (! deletepassword.isEmpty()) {
-            anonFile.setDeletePassword(deletepassword);
+            anonFile.setDeletepassword(deletepassword);
+            anonFile.toggleHasDeletePassword();
         }
         files.save(anonFile);
 
