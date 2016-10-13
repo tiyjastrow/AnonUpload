@@ -8,5 +8,4 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface AnonFileRepository extends CrudRepository<AnonFile, Integer> {
         AnonFile findByoriginalFilename(String name);
-        AnonFile findByPassword(String password);
 }

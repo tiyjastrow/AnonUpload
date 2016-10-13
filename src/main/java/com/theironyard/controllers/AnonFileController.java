@@ -39,7 +39,6 @@ public class AnonFileController {
         FileOutputStream fos = new FileOutputStream(f);
         fos.write(file.getBytes());
 
-        //AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename());
         AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), password, permanent, comment);
 
         if (anonFile.getPermanent() != "permanent") {
@@ -49,9 +48,6 @@ public class AnonFileController {
                 Collections.sort(fileList);
 
                 morefiles.delete(fileList.get(0));
-
-                //String filename = fileList.get(0).getFileName();
-                //dir.delete("public/files"+filename);
 
                 fileCount--;
             }
@@ -70,8 +66,7 @@ public class AnonFileController {
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
     public void Delete(HttpServletResponse response, String name, String password) throws IOException {
         AnonFile a = morefiles.findByoriginalFilename(name);
-        AnonFile b = morefiles.findByPassword(password);
-        if (a.getPassword().equals(password)) {
+        if ((a != null) && a.getPassword().equals(password)) {
             morefiles.delete(a);
         }
         response.sendRedirect("/");

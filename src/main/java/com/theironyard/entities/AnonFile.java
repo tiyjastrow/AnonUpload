@@ -30,12 +30,6 @@ public class AnonFile implements Comparable {
     public AnonFile() {
     }
 
-    /*public AnonFile(String fileName, String originalFilename) {
-        this.fileName = fileName;
-        this.originalFilename = originalFilename;
-    }*/
-
-
     public AnonFile(String fileName, String originalFilename, String password, String permanent, String comment) {
         this.fileName = fileName;
         this.originalFilename = originalFilename;
