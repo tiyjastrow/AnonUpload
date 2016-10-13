@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anon</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/><br/>
+    <input type="text" placeholder="password" name="password"/><br/>
+    <input type="radio"name="permanent" value="permanent"/>Permanent<br/>
+    <input type="radio"name="permanent" value="non-permanent" checked/>Non-permanent<br/>
+    <input type="text" placeholder="comment" name="comment"/><br/>
+    <button type="submit">Upload</button>
+</form>
+
+<div id="filelist">
+</div>
+
+<form action="/delete" method="post">
+    <input type="text" placeholder="picture name" name="name"/>
+    <input type="text" placeholder="picture password" name="password"/>
+    <button type="submit">Delete entry</button>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
