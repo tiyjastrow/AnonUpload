@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by joe on 11/10/2016.
@@ -23,30 +24,56 @@ import java.util.ArrayList;
 @RestController
 public class AnonFileController {
 
-    //String fileCount;
+    int fileCount;
 
     @Autowired
     AnonFileRepository morefiles;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public void upload(HttpServletResponse response, MultipartFile file, String password, String permanent, String comment)throws IOException{
+    public void upload(HttpServletResponse response, MultipartFile file, String password, String permanent, String comment) throws IOException {
 
         File dir = new File("public/files");
         dir.mkdirs();
 
-        File f  = File.createTempFile("file", file.getOriginalFilename(), dir);
+        File f = File.createTempFile("file", file.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(f);
         fos.write(file.getBytes());
 
         //AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename());
-        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(),password, permanent, comment);
+        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), password, permanent, comment);
+
+        if (anonFile.getPermanent() != "permanent") {
+            fileCount++;
+            if (fileCount > 4) {
+                ArrayList<AnonFile> fileList = (ArrayList) morefiles.findAll();
+                Collections.sort(fileList);
+
+                morefiles.delete(fileList.get(0));
+
+                //String filename = fileList.get(0).getFileName();
+                //dir.delete("public/files"+filename);
+
+                fileCount--;
+            }
+        }
+
         morefiles.save(anonFile);
 
         response.sendRedirect("/");
     }
 
-    @RequestMapping(path ="/files", method = RequestMethod.GET)
-    public ArrayList<AnonFile> getFiles(){
+    @RequestMapping(path = "/files", method = RequestMethod.GET)
+    public ArrayList<AnonFile> getFiles() {
         return (ArrayList<AnonFile>) morefiles.findAll();
+    }
+
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    public void Delete(HttpServletResponse response, String name, String password) throws IOException {
+        AnonFile a = morefiles.findByoriginalFilename(name);
+        AnonFile b = morefiles.findByPassword(password);
+        if (a.getPassword().equals(password)) {
+            morefiles.delete(a);
+        }
+        response.sendRedirect("/");
     }
 }

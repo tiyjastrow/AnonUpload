@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "morefiles")
-public class AnonFile {
+public class AnonFile implements Comparable {
     @Id
     @GeneratedValue
     int id;
@@ -18,7 +18,7 @@ public class AnonFile {
     @Column(nullable = false)
     String originalFilename;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String password;
 
     @Column(nullable = false)
@@ -90,4 +90,10 @@ public class AnonFile {
 
     public void setComment(String comment) {
         this.comment = comment;}
+
+    @Override
+    public int compareTo(java.lang.Object o) {
+        AnonFile m = (AnonFile) o;
+        return id - m.id;
+    }
 }
