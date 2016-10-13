@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anon</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="text" placeholder="password" name="password"/>
+    <input type="radio"name="permanent" value="permanent"/>
+    <input type="radio"name="permanent" value="non-permanent" checked/>
+    <input type="text" placeholder="comment" name="comment"/>
+    <button type="submit">Upload</button>
+</form>
+
+<div id="filelist"></div>
+
+<!-- calling google's api -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
