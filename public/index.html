@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WhatIsHappening?!</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
+    <input type="text" placeholder="enter comment" name="comment">
+    <input type="checkbox" name="htmlCheckbox" value="true">
+    <button type="submit">Upload</button>
+    <input type="password" placeholder="optional delete pass" name="deletePass">
+</form>
+
+<form action="/delete" method="post">
+    <br>
+    <input type="text" placeholder="id" name="deleteId">
+    <input type="password" placeholder="delete pass" name="deletePassInput">
+    <button type="submit">delete</button>
+</form>
+
+<div id="filelist"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
