@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="checkbox" value="true" name="isPermanent"/>
+    <input type="text" placeholder="Enter a comment." name="comment"/>
+    <input type="password" placeholder="Enter a deletion password" name="delPassword"/>
+    <button type="submit">Upload</button>
+</form>
+<br>
+<br>
+
+<form action="/delete-file" method="post">
+    <input type="text" placeholder="Enter the ID" name="delID"/>
+    <input type="password" placeholder="Enter the correct password" name="delPassInput"/>
+    <button type="submit">Delete</button>
+</form>
+
+<div id="filelist"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
