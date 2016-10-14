@@ -28,13 +28,6 @@ public class AnonFile {
     public AnonFile() {
     }
 
-    public AnonFile(String filename, String originalFilename, String comment, String permanent) {
-        this.filename = filename;
-        this.originalFilename = originalFilename;
-        this.comment = comment;
-        this.permanent = permanent;
-    }
-
     public AnonFile(String filename, String originalFilename, String comment, String permanent, String password) {
         this.filename = filename;
         this.originalFilename = originalFilename;

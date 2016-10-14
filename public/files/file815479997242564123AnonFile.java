@@ -21,26 +21,13 @@ public class AnonFile {
 
     private String comment;
 
-    private String permanent;
-
-    private String password;
-
     public AnonFile() {
     }
 
-    public AnonFile(String filename, String originalFilename, String comment, String permanent) {
+    public AnonFile(String filename, String originalFilename, String comment) {
         this.filename = filename;
         this.originalFilename = originalFilename;
         this.comment = comment;
-        this.permanent = permanent;
-    }
-
-    public AnonFile(String filename, String originalFilename, String comment, String permanent, String password) {
-        this.filename = filename;
-        this.originalFilename = originalFilename;
-        this.comment = comment;
-        this.permanent = permanent;
-        this.password = password;
     }
 
     public int getId() {
@@ -73,21 +60,5 @@ public class AnonFile {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public String getPermanent() {
-        return permanent;
-    }
-
-    public void setPermanent(String permanent) {
-        this.permanent = permanent;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

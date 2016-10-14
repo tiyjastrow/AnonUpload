@@ -31,12 +31,12 @@ public class AnonFileController {
         dir.mkdirs();
         List<AnonFile> all = (List) files.findAll();
         List<AnonFile> listTen = new ArrayList<AnonFile>();
-        for (AnonFile f : all) {
-            if (f.getPermanent() == null) {
+        for (AnonFile f: all) {
+            if(f.getPermanent()== null) {
                 listTen.add(f);
             }
         }
-        if (listTen.size() > 1) {
+        if (listTen.size()>1) {
             AnonFile someFile = listTen.get(0);
             files.delete(someFile.getId());
         }
@@ -47,7 +47,7 @@ public class AnonFileController {
         fos.write(file.getBytes());
 //
 
-        AnonFile anonfile = new AnonFile(f.getName(), file.getOriginalFilename(), comment, perm, password);
+        AnonFile anonfile = new AnonFile(f.getName(), file.getOriginalFilename(), comment, perm,password);
         files.save(anonfile);
 
         response.sendRedirect("/");
@@ -55,18 +55,17 @@ public class AnonFileController {
 
     @RequestMapping(path = "/files", method = RequestMethod.GET)
     public List<AnonFile> getfiles() {
-        return (List<AnonFile>) files.findAll();
+        return (List<AnonFile> )files.findAll();
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
     public void deleteFile(HttpServletResponse response, String password, Integer id) throws IOException {
         AnonFile file = files.findById(id);
-        if (password.equals(file.getPassword())) {
+        if(password == file.getPassword()) {
             files.delete(file.getId());
 
         }
-        System.out.println(password);
-        System.out.println(file.getPassword());
+        ;
 
 
         response.sendRedirect("/");
