@@ -3,11 +3,21 @@
 <body>
 
 <form action="/upload" enctype="multipart/form-data" method="post">
-    <input type="file" name="file">
+    <input type="file" name="file"/>
+    <input type="text" placeholder="file name" name="comment"/>
+    <input type="checkbox" name="permanent" value="true"/>Permanent File<br>
+    <input type="text" placeholder="Set Deletion Password" name="password"/>
     <button type="submit">Upload</button>
 </form>
-
+<br>
 <div id="filelist"></div>
+<br>
+<form action="/delete" method="post">
+    <input type="text" placeholder="file ID to Delete" name="id"/>
+    <input type="text" placeholder="Password to Delete this file" name="password"/>
+    <button type="submit">Delete</button>
+</form>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="main.js"></script>
 

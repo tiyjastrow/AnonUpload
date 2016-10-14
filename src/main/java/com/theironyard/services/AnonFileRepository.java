@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface AnonFileRepository extends CrudRepository<AnonFile, Integer> {
 
-    int countByFilename(String filename);
 
-    ("SELECT FROM files ORDER BY files_id DESC ")
-    List<AnonFile> findByRecentFiles(Integer id);
+    List<AnonFile> findAllByOrderByIdAsc();
+
+    AnonFile findById(Integer id);
 }
