@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <button type="submit">Upload</button>
+    <input type="checkbox" name="perm" value="yes"/>Perm file<br/>
+    <input type="text" placeholder="Comment" name="comment">
+    <input type="text" placeholder="password" name="password"/>
+</form>
+<div id="filelist">
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
