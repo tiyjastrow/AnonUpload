@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    Check For Permanent<input type="checkbox" name="permanent" value="true"/>
+    <input type="text" placeholder="comment" name="comment"/>
+    <input type="text" placeholder="deletion password" name="password"/>
+    <button type="submit">Upload</button>
+</form>
+<br/>
+<form action="/delete" method="post"/>
+<input type="text" placeholder="name" name="name"/>
+<input type="text" placeholder="password" name="password"/>
+<button type="submit">delete</button>
+</form>
+<div id="fileList"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
