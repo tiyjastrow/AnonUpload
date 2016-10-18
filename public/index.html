@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file" />
+    <input type="checkbox"  name="permFile" value="true"; />Permanent&nbsp;<br>
+    <input type="text" placeholder="Enter comment for file" name="comment" />
+    <input type="password" name="password" placeholder="Enter password"/>
+    <button type="submit">Upload</button>
+</form><br><br>
+
+
+
+<div id="filelist"></div><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+<form action="/delete" method="post">
+    <input type="password" placeholder="Enter password for deletion" style="width: 150px;" name="deletePassword"/>
+    <button type="submit">Delete</button>
+</form><br><br>
+
+</body>
+</html>
