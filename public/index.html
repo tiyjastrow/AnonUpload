@@ -1,0 +1,16 @@
+<html>
+<body>
+<h1>10 file saver</h1>
+<h5>choose your best 10, its all you got</h5>
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="text" placeholder="Optional filename" name="altName"/>
+    <input type="password" placeholder="Optional password for file" name="password"/>
+    <button type="submit">Upload</button>
+</form>
+<p>The checked boxes are immune from implosion</p>
+<div id="fileList"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
