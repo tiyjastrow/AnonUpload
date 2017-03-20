@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AnonUpload</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="text" placeholder="comment" name="comment"/>
+    <input type="checkbox" value="true" name="check">Make file permanent</>
+    <input type="password" placeholder="deletion password" name="password"/>
+    <button type="submit">Upload</button>
+</form>
+<br>
+
+
+<div id="filelist"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
+
