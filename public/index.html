@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+<form action="/upload" enctype="multipart/form-data" method="post"/>
+<input type="file" name="file"/>
+<input type="text" placeholder="Enter description" name="fileDesc"/>
+<span style="font-size: small; font-family: 'Arial'; color: #666;">
+    Make Private
+<input type="checkbox" name="isTrue" />
+</span>
+<button type="submit">Upload</button>
+<span style="font-size: small; font-family: 'Arial'; color: #666;">
+    <input type="text" placeholder="Enter password" name="password"/>
+    Enter a password if you wish to protect delete
+</span>
+
+</form>
+
+
+<div id="filelist"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="main.js"></script>
+
+
+</body>
+</html>
